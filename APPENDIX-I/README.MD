@@ -51,35 +51,71 @@ Congratulations! You have successfully installed Docker Desktop in Windows.
 
 # How to Run Your First Container in Windows Using Docker Desktop
 
-Docker allows you to create and run containers on any operating system supported by Docker Desktop. This guide will walk you through the steps to run your first container in Windows using Docker Desktop.
+Now that Docker is installed and running, let's run your first container. In the PowerShell, execute the following command:
+```powershell
+docker run hello-world
+```
 
+This command will download the hello-world image from Docker Hub and run it as a container. You should see output similar to the following:
 
+```powershell
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
 
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image which runs the executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+```
+Congratulations! You have successfully run your first container in Windows using Docker Desktop.
 
 # What is a Dockerfile?
 
-## Example: Dockerfile for a Python Flask Application
+A Dockerfile is a script that contains instructions on how to build a Docker image. It contains a series of commands that the Docker daemon can execute in order to create an image. The Dockerfile uses a simple, human-readable syntax that allows users to automate the process of building and deploying Docker images.
 
-Here's an example of a `Dockerfile` that can be used to containerize a Python Flask application:
+Here's a simple example of a Dockerfile to run a php website:
 
 ```Dockerfile
-# Use an official Python runtime as a parent image
-FROM python:3.7-slim
+# Set the base image
+FROM php:7.4-apache
 
-# Set the working directory to /app
-WORKDIR /app
+# Copy custom application files
+COPY ./my-php-website /var/www/html
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Change ownership of the copied files
+RUN chown -R www-data:www-data /var/www/html
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+# Set the document root
+DOCUMENT_ROOT /var/www/html
+
+# Set the directory for configuration
+RUN a2enmod rewrite
+
+# Install required extension for mysql
+RUN docker-php-ext-install mysqli
+
+# add additional setup
+RUN echo 'AllowOverride All' >> /etc/apache2/apache2.conf
 
 # Make port 80 available to the world outside this container
 EXPOSE 80
 
-# Define environment variable
-ENV NAME World
+# This is the command to execute in the container when it launches
+CMD ["apache2-foreground"]
+```
 
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+Now to build the image, we use the following command in Powershell (on the same path as your dockerfile, and project):
+
+```powershell
+docker build -t your-image-name .
+```
+
+Once the image is built, you can run a Docker container based on this image using the following command:
+bash
+
+```powershell
+docker run -d -p 8080:80 your-image-name
+```
+
+This command will map port 8080 on your host machine to port 80 on the Docker container. You can then access your PHP website by opening a web browser and navigating to "http://localhost:8080".
