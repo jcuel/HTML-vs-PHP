@@ -20,6 +20,21 @@ Docker is an open platform for developing, shipping, and running applications in
 
 # How to install Docker Desktop in Windows
 
+## Prerequisites
+
+Before starting, make sure you have the following installed on your system:
+
+1. Windows 10 Home, Pro, Enterprise, or Education (64-bit)
+2. Hyper-V and Containers Windows features enabled
+
+You can check this by running the following command in an elevated PowerShell:
+
+```powershell
+Get-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -Online
+Get-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online
+```
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/aCRMnDLnWmU/0.jpg)]https://www.youtube.com/watch?v=aCRMnDLnWmU)
+
 1. Visit the Docker Desktop for Windows page: [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop)
 
 2. Click on the "Get Docker" button to download the installer.
@@ -33,3 +48,38 @@ Docker is an open platform for developing, shipping, and running applications in
 6. You should now see a screen displaying various settings for Docker Desktop, such as "Resources," "Docker Engine," "Kubernetes," etc.
 
 Congratulations! You have successfully installed Docker Desktop in Windows.
+
+# How to Run Your First Container in Windows Using Docker Desktop
+
+Docker allows you to create and run containers on any operating system supported by Docker Desktop. This guide will walk you through the steps to run your first container in Windows using Docker Desktop.
+
+
+
+
+# What is a Dockerfile?
+
+## Example: Dockerfile for a Python Flask Application
+
+Here's an example of a `Dockerfile` that can be used to containerize a Python Flask application:
+
+```Dockerfile
+# Use an official Python runtime as a parent image
+FROM python:3.7-slim
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
