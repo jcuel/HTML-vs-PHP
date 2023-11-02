@@ -45,5 +45,18 @@ services:
 volumes:
   db-data:
 ```
+# Start & Stop your Docker Compose Stack
+
+## Start your stack
+
+```powershell
+docker-compose up
+```
+
+## Stop your stack 
+
+```powershell
+docker-compose down
+```
 
 You can find public images for diferent software at [Docker HUB](https://hub.docker.com/search?q=)
