@@ -12,13 +12,7 @@ To learn more about Docker Compose, refer to the official documentation: [Docker
 
 To use Docker Compose, you need to follow these steps:
 
-1. **Install Docker Compose**: You can download the latest version of Docker Compose from the official website: [Docker Compose Downloads](https://docs.docker.com/compose/install/). After downloading the Docker Compose binary, you can install it using the following command (if you are using Linux, it comes as part for Windows Dockerfile package):
-
-```bash
-sudo mv ~/Downloads/docker-compose /usr/local/bin/docker-compose
-```
-
-2. Create a Docker Compose File: Docker Compose uses a YAML file to configure your application's services, networks, and volumes. This file is named docker-compose.yml and is usually located in the root directory of your project.
+1. Create a Docker Compose File: Docker Compose uses a YAML file to configure your application's services, networks, and volumes. This file is named docker-compose.yml and is usually located in the root directory of your project.
 
 Here's an example of a basic docker-compose.yml file:
 
