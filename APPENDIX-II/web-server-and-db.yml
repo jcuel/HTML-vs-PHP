@@ -1,0 +1,27 @@
+# version of the language
+version: '3'
+
+# Definition of services in stack
+services:
+  # first the web service
+  web:
+    # set image name
+    image: your-image-name
+    # set port mapping in your-pc-port:container-exposed-port format
+    ports:
+      - "8080:80"
+  # Then the database service
+  database:
+    # in this case we use a public image
+    image: postgres
+    # this image requires additional environment variables
+    environment:
+      POSTGRES_USER: your_username
+      POSTGRES_PASSWORD: your_password
+    # finally a volume so data we create, set, update, etc is persistent when container is down. Map method id volume:contianer-path
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
+
+# Finally we define the volume, doing it this way, allows docker to create the disk file.
+volumes:
+  db-data:
