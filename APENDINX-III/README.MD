@@ -244,3 +244,50 @@ $cnt=$cnt+1;
 	</body>
 </html>
 ```
+## note: added some JS Script & bootstrap for CSS.
+
+# Creating Dockerfile to HOST the PHP Website.
+
+## Solution Design:
+
+This solution will require the following elements
+ - A PosgresSQL Database
+ - PHPMyAdmin to manage the database
+ - An Apache webserver to host the PHP Website
+(Note: Alternatively can replace with a webshoting like 000webhost.com that includes free php hosting and free mysql db)
+
+## Step 1: Build Website image
+
+1. Create a Dockerfile for your website
+
+```dockerfile
+# Use the official PHP 7.4 runtime as a parent image
+FROM php:7.4-apache
+
+# Copy your index.php file into the Docker container at /var/www/html
+COPY . /var/www/html/
+
+# Set the permissions for the files to allow the Apache user to access them
+RUN chown -R www-data:www-data /var/www/html
+
+# Allow the apache user to access the directory
+RUN chmod -R 755 /var/www/html
+
+# Install any necessary extensions to connect postgresql
+RUN docker-php-ext-install pdo pdo_pgsql
+
+# Set the working directory to /var/www/html
+WORKDIR /var/www/html
+
+# Change the port to 80
+EXPOSE 80
+
+# Command to run Webserver
+CMD ["apache2ctl", "-D", "FOREGROUND"]
+```
+
+2. Build the Image named as "my-php-web-server-01"
+
+```powershell
+docker build -t my-php-web-server-01 .
+```
