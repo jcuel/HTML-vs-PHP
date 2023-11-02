@@ -295,4 +295,43 @@ docker build -t my-php-web-server-01 .
 
 ## Create the docker-compose.yml file to build the complete solution
 
+```yml
+version: '3.8'
+
+services:
+ mysql:
+    image: mysql:latest
+    container_name: my-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: your-root-password
+      MYSQL_DATABASE: your-db
+      MYSQL_USER: your-user
+      MYSQL_PASSWORD: your-password
+    volumes:
+      - mysqldata:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+ phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: my-phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: your-root-password
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+
+ webserver:
+    image: your-webserver-image
+    container_name: my-webserver
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+
+volumes:
+ mysqldata:
+```
 
