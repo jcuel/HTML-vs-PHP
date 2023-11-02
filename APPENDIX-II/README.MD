@@ -26,7 +26,7 @@ services:
   web:
     # set image name
     image: your-image-name
-    # set port mapping in your-pc:container format
+    # set port mapping in your-pc-port:container-exposed-port format
     ports:
       - "8080:80"
   # Then the database service
@@ -45,3 +45,5 @@ services:
 volumes:
   db-data:
 ```
+
+You can find public images for diferent software at [Docker HUB](https://hub.docker.com/search?q=)
