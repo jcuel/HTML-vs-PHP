@@ -52,7 +52,7 @@ PHP: It can be executed on a web server using a PHP-compatible server, such as A
 HTML: It is used for structuring and displaying content on a web page.
 PHP: It is used for server-side processing, including tasks such as generating dynamic content, handling forms, accessing databases, and more.
 
-## Conclusion
+## 5. Conclusion:
 
 In conclusion, while HTML and PHP have some similarities due to the fact that they can both be used in a web environment, they serve different purposes and have different syntax and processing rules. HTML is primarily used for structuring and displaying content, while PHP is used for executing server-side scripts.</s>
 
@@ -71,3 +71,8 @@ So, while HTML and PHP are both used in web development, they serve different pu
 It's also worth mentioning that while it's possible to use only HTML or only PHP for web development, in most cases, developers use a combination of both languages to create the most versatile and visually appealing webpages.</s>
 
 So, when deciding whether to use HTML or PHP for web development, it's essential to consider your specific needs and goals. HTML is suitable for structuring and displaying content, while PHP is suitable for executing server-side scripts. By combining both languages, you can create powerful, dynamic webpages that offer a unique user experience
+
+
+## APPENDIX I: What is Docker, and how to host an PHP Site locally.
+## APPENDIX II: What is Docker Compose, and how to host a PHP Site and it's dependencies
+## APPENDIX III: Real Life Scenario, PHP Website that connects to a postgress database, displays data into a table and allows to add or remove entries.
