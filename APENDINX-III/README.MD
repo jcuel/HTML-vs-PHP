@@ -251,7 +251,7 @@ $cnt=$cnt+1;
 ## Solution Design:
 
 This solution will require the following elements
- - A PosgresSQL Database
+ - A PostgreSQL Database
  - PHPMyAdmin to manage the database
  - An Apache webserver to host the PHP Website
 (Note: Alternatively can replace with a webshoting like 000webhost.com that includes free php hosting and free mysql db)
