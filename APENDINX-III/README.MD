@@ -33,7 +33,7 @@ CREATE TABLE `tblempdata` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ```
 
-$# Step3: 
+## Step3: 
 
 Create a database connection file and save this file with the name “config.php”. Below is the code of the database connection.
 
