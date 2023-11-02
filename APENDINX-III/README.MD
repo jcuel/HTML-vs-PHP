@@ -258,6 +258,7 @@ This solution will require the following elements
 
 ## Step 1: Build Website image
 
+Note: Don't forget to complete config.php with 
 1. Create a Dockerfile for your website
 
 ```dockerfile
@@ -291,3 +292,7 @@ CMD ["apache2ctl", "-D", "FOREGROUND"]
 ```powershell
 docker build -t my-php-web-server-01 .
 ```
+
+## Create the docker-compose.yml file to build the complete solution
+
+
