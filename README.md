@@ -75,7 +75,7 @@ So, when deciding whether to use HTML or PHP for web development, it's essential
 
 ## APPENDIX I:
 
-What is Docker, and how to host an PHP Site locally.
+What is a container, what is Docker Desktop and how to install it to host an PHP Site locally.
 
 ## APPENDIX II:
 
