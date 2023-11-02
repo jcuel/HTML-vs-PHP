@@ -83,4 +83,4 @@ What is Docker Compose, and how to host a PHP Site and it's dependencies
 
 ## APPENDIX III: 
 
-Real Life Scenario, PHP Website that connects to a postgress database, displays data into a table and allows to add or remove entries.
+Real Life Scenario, PHP Website that connects to a MySQL database, anmd allows to search data into Table.
